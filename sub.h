@@ -12,6 +12,7 @@ typedef struct job {
 
 void createSubThreads();
 void createCPUThreads();
+void createioThreads();
 
 
 #endif

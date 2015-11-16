@@ -21,6 +21,7 @@ int main(int argc, char *argv[]) {
 
 	createSubThreads();
 	createCPUThreads();
+	createioThreads();
 
 	int i;
 	for (i = 0; i < 4; i++) {
