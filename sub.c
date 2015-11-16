@@ -18,14 +18,6 @@ extern Queue *ioSchedule;
 pthread_t *mySubThreads;
 int jobID = 0;
 
-typedef struct job {
-	int ID;
-	int numPhase;
-	int currentPhase;
-	int **times;
-	int completed;
-} Job;
-
 void createSubThreads() {
 	int i;
 	mySubThreads = (pthread_t *) malloc(sizeof(pthread_t)*thread_count);
@@ -66,7 +58,7 @@ void *myThread(void *theArg) {
 Job *createJob() {
 	Job *job = (Job *) malloc(sizeof(Job));
 	job->ID = ++jobID;
-	job->currentPhase = 1;
+	job->currentPhase = 0;
 	job->numPhase = rand()%5+1;
 	job->times = (int **) malloc(sizeof(int *)*2);
 	int i;

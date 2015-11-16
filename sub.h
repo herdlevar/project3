@@ -3,7 +3,13 @@
 
 pthread_t *mySubThreads;
 
-typedef struct job Job;
+typedef struct job {
+	int ID;
+	int numPhase;
+	int currentPhase;
+	int **times;
+	int completed;
+} Job;
 
 void createSubThreads();
 
