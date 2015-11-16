@@ -67,7 +67,7 @@ Job *createJob() {
 	}
 	for (i = 0; i < job->numPhase; i++) {
 		job->times[0][i] = rand()%10+1;
-		job->times[1][i] = rand()%1;
+		job->times[1][i] = rand()%22;
 	}
 	job->completed = 0;
 	return job;
