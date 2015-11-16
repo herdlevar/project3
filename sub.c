@@ -17,14 +17,6 @@ extern Queue *cpuSchedule;
 pthread_t *mySubThreads;
 int jobID = 0;
 
-typedef struct job {
-	int ID;
-	int numPhase;
-	int currentPhase;
-	int **times;
-	int completed;
-} Job;
-
 void createSubThreads() {
 	int i;
 	mySubThreads = (pthread_t *) malloc(sizeof(pthread_t)*thread_count);
@@ -40,7 +32,7 @@ void *myThread(void *theArg) {
 
 	while (1) {
 		// Create jobs and add to the ready queue here
-		add(cpuSchedule, createJob); 
+		add(cpuSchedule, createJob()); 
 		printf("Creating a job.\n");
 		while (then - now < 3) {
 			// Chech finish queue here
@@ -60,7 +52,7 @@ void *myThread(void *theArg) {
 Job *createJob() {
 	Job *job = (Job *) malloc(sizeof(Job));
 	job->ID = ++jobID;
-	job->currentPhase = 1;
+	job->currentPhase = 0;
 	job->numPhase = rand()%5+1;
 	job->times = (int **) malloc(sizeof(int *)*2);
 	int i;
@@ -69,9 +61,8 @@ Job *createJob() {
 	}
 	for (i = 0; i < job->numPhase; i++) {
 		job->times[0][i] = rand()%10+1;
-		job->times[1][i] = rand()%1;
+		job->times[1][i] = rand()%2;
 	}
-	job->completed = 0;
 	return job;
 }
 
