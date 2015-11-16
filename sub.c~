@@ -46,7 +46,6 @@ void *myThread(void *theArg) {
 			add(cpuSchedule, temp); 
 		} else {
 			add(ioSchedule, temp);
-		}
 		printf("Creating a job.\n");
 		while (then - now < 3) {
 			// Chech finish queue here
