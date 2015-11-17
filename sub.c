@@ -57,6 +57,7 @@ void *myThread(void *theArg) {
 }
 
 Job *createJob() {
+	srand(time(NULL));
 	Job *job = (Job *) malloc(sizeof(Job));
 	job->ID = ++jobID;
 	job->currentPhase = 0;
