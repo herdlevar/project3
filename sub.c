@@ -34,14 +34,6 @@ void *myThread(void *theArg) {
 	while (1) {
 		// Create jobs and add to the ready queue here
 		Job *temp = createJob();
-<<<<<<< HEAD
-		if (temp->times[1][0] == 0) {
-			add(cpuSchedule, temp); 
-		} else {
-			add(ioSchedule, temp);
-		}
-		printf("Creating a job.\n");
-=======
 		if(temp->times[1][0]==0){
 			add(cpuSchedule, temp);
 		}
@@ -49,7 +41,6 @@ void *myThread(void *theArg) {
 			add(ioSchedule, temp);
 		}
 		printf("Creating a job with PID %d\n",temp->ID);
->>>>>>> yoshit
 		while (then - now < 3) {
 			// Chech finish queue here
 			temp = poll(finishedSchedule);
@@ -78,11 +69,7 @@ Job *createJob() {
 	}
 	for (i = 0; i < job->numPhase; i++) {
 		job->times[0][i] = rand()%10+1;
-<<<<<<< HEAD
-		job->times[1][i] = rand()%22;
-=======
 		job->times[1][i] = rand()%2;
->>>>>>> yoshit
 	}
 	return job;
 }

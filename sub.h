@@ -4,18 +4,10 @@
 pthread_t *mySubThreads;
 
 typedef struct job {
-<<<<<<< HEAD
-	int ID;
-	int numPhase;
-	int currentPhase;
-	int **times;
-	int completed;
-=======
         int ID;
         int numPhase;
         int currentPhase;
         int **times;
->>>>>>> yoshit
 } Job;
 
 void createSubThreads();
